@@ -1,3 +1,7 @@
+# How to run
+
+Make sure you have React and Node installed, then in the console of the project's repository, run 'npm run dev'. This will start a localhost program with a link that you can view in your browser.
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
