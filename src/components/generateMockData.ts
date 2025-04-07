@@ -45,9 +45,11 @@ const generateMockWeekData = (): Dataset => {
       { length: 1000 },
       (_, i) => Date.now() - (999 - i) * 10
     ), // Every 10ms
-    values: Array.from({ length: 1000 }, () =>
-      parseFloat((Math.random() * 0.5 + 0.7).toFixed(2))
-    ), // ECG values
+    values: Array.from({ length: 1000 }, (_, i) => {
+      const t = (i % 200) / 200; // Simulate a heartbeat every 2 seconds (200 samples)
+      const spike = Math.exp(-Math.pow((t - 0.5) * 10, 2)); // Gaussian-like spike
+      return parseFloat((0.7 + 0.5 * spike + Math.random() * 0.05).toFixed(2)); // Baseline + spike + noise
+    }),
   };
 
   return {

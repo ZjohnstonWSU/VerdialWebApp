@@ -1,6 +1,5 @@
 import { CodeIcon, DownloadIcon, ReloadIcon } from "@radix-ui/react-icons";
 import { Flex, Button, Heading } from "@radix-ui/themes";
-import PatientInfo from "./PatientInfo";
 
 interface AppHeaderProps {
   onFetch: () => void;
@@ -26,7 +25,6 @@ const AppHeader: React.FC<AppHeaderProps> = ({
       }}
     >
       <Heading>Patient Monitor Dashboard</Heading>
-      <PatientInfo />
       <Flex direction="row" gap="4">
         <Button onClick={onFetch} variant="surface">
           Fetch Data <ReloadIcon />

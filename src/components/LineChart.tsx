@@ -50,7 +50,7 @@ const LineChartComponent: React.FC<LineChartProps> = ({
 
   return (
     <Flex justify="center" style={{ height: "30vh", margin: "10px" }}>
-      <Card style={{ width: "90vw", padding: "15px" }}>
+      <Card style={{ width: "90vw", padding: "15px", paddingBottom: "35px" }}>
         <Strong style={{ color: "black" }}>{title} </Strong>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={chartData}>
@@ -60,9 +60,47 @@ const LineChartComponent: React.FC<LineChartProps> = ({
               tickFormatter={(hour) =>
                 `${hour % 12 || 12} ${hour >= 12 ? "PM" : "AM"}`
               }
+              label={{
+                value: "Time (hours)",
+                position: "insideBottom",
+                dy: 10,
+              }}
             />
-            <YAxis domain={[adjustedMin, maxValue]} />
-            <Tooltip />
+            <YAxis
+              domain={[adjustedMin, maxValue]}
+              label={
+                dataKey === "spo2"
+                  ? {
+                      value: "SpO2 (%)",
+                      angle: -90,
+                      position: "insideLeft",
+                      style: { textAnchor: "middle" },
+                    }
+                  : dataKey === "respiration"
+                  ? {
+                      value: "Breaths/min",
+                      angle: -90,
+                      position: "insideLeft",
+                      style: { textAnchor: "middle" },
+                    }
+                  : undefined
+              }
+            />
+            <Tooltip
+              labelFormatter={(label) =>
+                `Time : ${label % 12 || 12} ${label >= 12 ? "PM" : "AM"}`
+              }
+              formatter={(value) => [
+                `${value}${
+                  dataKey === "spo2"
+                    ? "%"
+                    : dataKey === "respiration"
+                    ? " breaths/min"
+                    : ""
+                }`,
+                "Value",
+              ]}
+            />
             <Line
               type="monotone"
               dataKey="value"

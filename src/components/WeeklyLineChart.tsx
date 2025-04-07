@@ -54,7 +54,19 @@ const WeeklyLineChartComponent: React.FC<LineChartProps> = ({
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="date" />
             <YAxis domain={[Math.floor(adjustedMin), Math.ceil(maxValue)]} />
-            <Tooltip />
+            <Tooltip
+              labelFormatter={(label) => `${label}`}
+              formatter={(value) => [
+                `${parseFloat(value as string).toFixed(2)}${
+                  dataKey === "spo2"
+                    ? "%"
+                    : dataKey === "respiration"
+                    ? " breaths/min"
+                    : ""
+                }`,
+                "Value",
+              ]}
+            />
             <Line
               type="monotone"
               dataKey="value"
