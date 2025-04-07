@@ -1,6 +1,6 @@
 # How to run
 
-Make sure you have React and Node installed, then in the console of the project's repository, run 'npm run dev'. This will start a localhost program with a link that you can view in your browser.
+Make sure you have Nodejs and npm installed. If you haven't done this yet, follow instructions on geeksforgeeks: [How to install NodeJS]([https://www.geeksforgeeks.org/node-js-npm-node-package-manager/#](https://www.geeksforgeeks.org/install-node-js-windows-macos-linux/)). Once installed, in the console of the project's repository, run 'npm run dev'. This will start a localhost program with a link that you can view in your browser.
 
 # React + TypeScript + Vite
 
