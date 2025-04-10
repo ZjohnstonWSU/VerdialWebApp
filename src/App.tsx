@@ -15,7 +15,7 @@ const App = () => {
 
   // Function to fetch data from Firestore
   const fetchData = async () => {
-    const dataDoc = doc(db, "TestDoc/2025-01-01");
+    const dataDoc = doc(db, "users/user_001");
     const snapshot = await getDoc(dataDoc);
     if (snapshot.exists()) {
       console.log("Inside fetch");
