@@ -50,7 +50,7 @@ const ECGChart: React.FC<{ title: string; color: string }> = ({
             />
             <YAxis
               label={{
-                value: "Voltage (V)",
+                value: "Voltage (mV)",
                 angle: -90,
                 position: "insideLeft",
                 dy: -10,

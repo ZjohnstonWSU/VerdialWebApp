@@ -1,4 +1,5 @@
 import { Dataset } from "../store/useDatasetStore";
+import rawJson from "../data/mockData.json";
 
 const generateMockWeekData = (): Dataset => {
   const startDate = new Date(); // Today
@@ -40,17 +41,7 @@ const generateMockWeekData = (): Dataset => {
   }
 
   // ECG Snapshot (Large set of timestamp-value pairs over 10 seconds)
-  const ecgSnapshot = {
-    timestamps: Array.from(
-      { length: 1000 },
-      (_, i) => Date.now() - (999 - i) * 10
-    ), // Every 10ms
-    values: Array.from({ length: 1000 }, (_, i) => {
-      const t = (i % 200) / 200; // Simulate a heartbeat every 2 seconds (200 samples)
-      const spike = Math.exp(-Math.pow((t - 0.5) * 10, 2)); // Gaussian-like spike
-      return parseFloat((0.7 + 0.5 * spike + Math.random() * 0.05).toFixed(2)); // Baseline + spike + noise
-    }),
-  };
+  const ecgSnapshot = rawJson.ecgSnapshot;
 
   return {
     patient: {
